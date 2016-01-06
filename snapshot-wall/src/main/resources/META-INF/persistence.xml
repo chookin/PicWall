@@ -9,7 +9,7 @@
             <!--must configured both in application.properties and persistence.xml, here is for c3p0 and there is for spring-->
             <property name="hibernate.connection.username" value="wall"/>
             <property name="hibernate.connection.password" value="wall_cm"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:23306/pic_wall?createDatabaseIfNotExist=true&amp;autoReconnect=true&amp;failOverReadOnly=false"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:23306/snapshot_wall?createDatabaseIfNotExist=true&amp;autoReconnect=true&amp;failOverReadOnly=false"/>
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

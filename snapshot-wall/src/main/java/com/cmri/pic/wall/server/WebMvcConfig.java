@@ -35,11 +35,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      * Unlike what the spring-boot states, to get my spring-boot jar to serve the content: I had to add specifically register my src/main/resources/static content
      */
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            "classpath:/META-INF/resources/"
+            "file:///"+ConfigManager.get("chu.server.documentRoot") //serve my static resource from a file system folder outside my project
+            , "classpath:/META-INF/resources/"
             , "classpath:/resources/"
             , "classpath:/static/"
             , "classpath:/public/"
-            , "file:///"+ConfigManager.get("chu.server.documentRoot") //serve my static resource from a file system folder outside my project
     };
     public static String getUrl(String path){
         return baseUrl + path;
