@@ -2,12 +2,14 @@ package com.cmri.pic.wall.server.controller;
 
 import cmri.utils.configuration.ConfigManager;
 import cmri.utils.lang.JsonHelper;
+import cmri.utils.lang.Pair;
 import com.cmri.pic.wall.server.WebMvcConfig;
 import com.cmri.pic.wall.server.domain.Pic;
 import com.cmri.pic.wall.server.domain.ResponseMessage;
 import com.cmri.pic.wall.server.helper.MultipartFileUploader;
 import com.cmri.pic.wall.server.repository.PicRepository;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,11 +45,11 @@ public class ImageController {
     @ResponseBody
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public ResponseMessage upload(HttpServletRequest request, @RequestParam(value = "img") MultipartFile file, String title) throws IOException{
-        String filename = uploadImg(request, file);
-        picRepository.save(Pic.newOne().setPath(filename).setTitle(title));
+        Pair<String, String> pair = uploadImg(request, file);
+        picRepository.save(Pic.newOne().setPath(pair.getValue()).setTitle(getTitle(pair.getKey(), title)));
         return new ResponseMessage()
-                .set("filename", filename)
-                .set("url", WebMvcConfig.getUrl(filename))
+                .set("filename", pair.getValue())
+                .set("url", WebMvcConfig.getUrl(pair.getValue()))
                 ;
     }
 
@@ -61,11 +63,13 @@ public class ImageController {
     @RequestMapping(value="/uploadMultiple", method = RequestMethod.POST)
     public ResponseMessage upload(HttpServletRequest request, @RequestParam(value = "img") MultipartFile[] files) throws IOException{
         List<String> filenames = new ArrayList<>();
+        List<Pic> pics = new ArrayList<>();
         for(MultipartFile file: files){
-            String filename = uploadImg(request, file);
-            filenames.add(filename);
+            Pair<String, String> pair = uploadImg(request, file);
+            filenames.add(pair.getValue());
+            Pic pic = Pic.newOne().setTitle(getTitle(pair.getKey(), "")).setPath(pair.getValue());
+            pics.add(pic);
         }
-        List<Pic> pics = filenames.stream().map(filename -> Pic.newOne().setPath(filename)).collect(Collectors.toList());
         picRepository.save(pics);
         return new ResponseMessage()
                 .set("count", String.valueOf(filenames.size()))
@@ -93,6 +97,9 @@ public class ImageController {
                 .set("items", JsonHelper.toJson(items));
     }
 
+    String getTitle(String filename, String title){
+        return StringUtils.isEmpty(title)?FilenameUtils.getBaseName(filename):title;
+    }
     /**
      * 上传图片文件
      *
@@ -100,7 +107,7 @@ public class ImageController {
      * @param file 照片文件
      * @throws IOException
      */
-    public static String uploadImg(HttpServletRequest request, MultipartFile file) throws IOException {
+    public static Pair<String, String> uploadImg(HttpServletRequest request, MultipartFile file) throws IOException {
         String uploadPath = FilenameUtils.concat(ConfigManager.get("upload.basePath"), "image");
         return MultipartFileUploader.getInstance(request)
                 .setUploadPath(uploadPath)

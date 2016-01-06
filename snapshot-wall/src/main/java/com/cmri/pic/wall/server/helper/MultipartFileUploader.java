@@ -1,6 +1,7 @@
 package com.cmri.pic.wall.server.helper;
 
 import cmri.utils.io.FileHelper;
+import cmri.utils.lang.Pair;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,19 +55,20 @@ public class MultipartFileUploader {
      default $uploadPath is ConfigManager.get("upload.uploadPath");
      $extension is parsed from source multipartfile name, if fail to parse, then set to defaultExtension, which is set by call method setDefaultExtension().
      * @param file MultipartFile
-     * @return file name, relative to server context path.
+     * @return Pair of file original name and file saved path. Saved path is relative to server context path.
      * @throws IOException
      */
-    public String upload(MultipartFile file) throws IOException {
+    public Pair<String,String> upload(MultipartFile file) throws IOException {
         String imgPath = ServerHelper.getDateSubPath(uploadPath);
         String fullPath = ServerHelper.getUploadPath(request, imgPath);
         FileHelper.mkdirs(fullPath);
-        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+        String originalName = file.getOriginalFilename();
+        String extension = FilenameUtils.getExtension(originalName);
         if(extension.isEmpty()){
             extension = defaultExtension;
         }
         String myName = genFilename() + "." + extension;
         file.transferTo(new File(FilenameUtils.concat(fullPath, myName)));
-        return FilenameUtils.concat(imgPath, myName);
+        return new Pair<>(originalName, FilenameUtils.concat(imgPath, myName));
     }
 }
