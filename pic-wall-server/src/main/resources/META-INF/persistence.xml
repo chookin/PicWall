@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+    <persistence-unit name="snapshot" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <!--must configured both in application.properties and persistence.xml, here is for c3p0 and there is for spring-->
+            <property name="hibernate.connection.username" value="wall"/>
+            <property name="hibernate.connection.password" value="wall_cm"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:23306/pic_wall?createDatabaseIfNotExist=true&amp;autoReconnect=true&amp;failOverReadOnly=false"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <!--设置外连接抓取树的最大深度 -->
+            <property name="hibernate.max_fetch_depth" value="5"/>
+            <property name="hibernate.jdbc.fetch_size" value="1000"/>
+            <property name="hibernate.jdbc.batch_size" value="1000"/>
+            <property name="hibernate.connection.useUnicode" value="true"/>
+            <property name="hibernate.connection.characterEncoding" value="UTF-8" />
+            <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider"/>
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="28"/>
+            <property name="hibernate.c3p0.timeout" value="1800"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <!--To fix error "SQLState: 08003", set testConnectionOnCheckout to true-->
+            <!--http://blog.csdn.net/nethibernate/article/details/6658855-->
+            <property name="hibernate.c3p0.testConnectionOnCheckout" value="true"/>
+            <property name="hibernate.c3p0.acquire_increment" value="1"/>
+            <property name="hibernate.c3p0.validate" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+
