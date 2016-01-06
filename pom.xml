@@ -9,8 +9,7 @@
     <version>1.0</version>
     <modules>
         <module>pic-wall-server</module>
+        <module>snapshot-utils</module>
     </modules>
     <packaging>pom</packaging>
-
-
 </project>
