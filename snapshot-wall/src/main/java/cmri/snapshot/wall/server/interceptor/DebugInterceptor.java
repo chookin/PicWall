@@ -1,4 +1,4 @@
-package com.cmri.pic.wall.server.interceptor;
+package cmri.snapshot.wall.server.interceptor;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

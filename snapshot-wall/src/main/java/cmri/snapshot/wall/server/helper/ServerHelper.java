@@ -1,4 +1,4 @@
-package com.cmri.pic.wall.server.helper;
+package cmri.snapshot.wall.server.helper;
 
 import cmri.utils.lang.TimeHelper;
 import org.apache.commons.io.FilenameUtils;

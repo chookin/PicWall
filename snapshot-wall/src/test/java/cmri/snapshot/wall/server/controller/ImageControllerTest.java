@@ -1,8 +1,8 @@
-package com.cmri.pic.wall.server.controller;
+package cmri.snapshot.wall.server.controller;
 
+import cmri.snapshot.wall.server.WebAppTest;
+import cmri.snapshot.wall.server.domain.ResponseMessage;
 import cmri.utils.configuration.ConfigFileManager;
-import com.cmri.pic.wall.server.WebAppTest;
-import com.cmri.pic.wall.server.domain.ResponseMessage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.core.io.FileSystemResource;

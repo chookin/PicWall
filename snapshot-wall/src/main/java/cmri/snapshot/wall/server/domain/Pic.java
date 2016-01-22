@@ -1,4 +1,4 @@
-package com.cmri.pic.wall.server.domain;
+package cmri.snapshot.wall.server.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

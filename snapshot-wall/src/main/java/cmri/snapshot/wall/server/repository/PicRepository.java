@@ -1,6 +1,6 @@
-package com.cmri.pic.wall.server.repository;
+package cmri.snapshot.wall.server.repository;
 
-import com.cmri.pic.wall.server.domain.Pic;
+import cmri.snapshot.wall.server.domain.Pic;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

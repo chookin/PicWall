@@ -1,13 +1,13 @@
-package com.cmri.pic.wall.server.controller;
+package cmri.snapshot.wall.server.controller;
 
+import cmri.snapshot.wall.server.domain.Pic;
+import cmri.snapshot.wall.server.helper.MultipartFileUploader;
+import cmri.snapshot.wall.server.repository.PicRepository;
 import cmri.utils.configuration.ConfigManager;
 import cmri.utils.lang.JsonHelper;
 import cmri.utils.lang.Pair;
-import com.cmri.pic.wall.server.WebMvcConfig;
-import com.cmri.pic.wall.server.domain.Pic;
-import com.cmri.pic.wall.server.domain.ResponseMessage;
-import com.cmri.pic.wall.server.helper.MultipartFileUploader;
-import com.cmri.pic.wall.server.repository.PicRepository;
+import cmri.snapshot.wall.server.WebMvcConfig;
+import cmri.snapshot.wall.server.domain.ResponseMessage;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by zhuyin on 11/12/15.

@@ -1,7 +1,7 @@
-package com.cmri.pic.wall.server;
+package cmri.snapshot.wall.server;
 
+import cmri.snapshot.wall.server.interceptor.DebugInterceptor;
 import cmri.utils.configuration.ConfigManager;
-import com.cmri.pic.wall.server.interceptor.DebugInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;

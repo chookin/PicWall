@@ -1,4 +1,4 @@
-package com.cmri.pic.wall.server;
+package cmri.snapshot.wall.server;
 
 import cmri.utils.lang.TimeHelper;
 import cmri.utils.web.NetworkHelper;
@@ -16,7 +16,7 @@ import java.util.Date;
  *
  */
 @SpringBootApplication
-public class Application {
+public class PicWallApplication {
 
     static {
         // configure log4j to log to custom file at runtime. In the java program directly by setting a system property (BEFORE you make any calls to log4j).
@@ -31,6 +31,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(PicWallApplication.class, args);
     }
 }

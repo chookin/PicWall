@@ -3,8 +3,10 @@
 ## 部署
 * package <pre>mvn package -DskipTests</pre>
 * copy, edit...
+* start mysql
+<pre>mysqld_safe  --defaults-file=etc/my.cnf &</pre>
 * execute
-<pre>java -cp conf/:lib/:pic-wall-server-1.0.jar com.cmri.pic.wall.server.Application</pre>
+<pre>java -cp conf/:lib/:snapshot-wall-1.0.jar cmri.snapshot.wall.server.PicWallApplication</pre>
 
 ## 访问
 * 上传图片

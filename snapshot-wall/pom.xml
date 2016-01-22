@@ -107,7 +107,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.cmri.pic.wall.server.Application</mainClass>
+                            <mainClass>cmri.snapshot.wall.server.PicWallApplication</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>

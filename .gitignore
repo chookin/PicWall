@@ -1,7 +1,7 @@
 # tmp files
 dump.rdb
 snapshot-wall/conf
-
+release
 # Compiled sources
 *.o
 *.class

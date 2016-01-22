@@ -1,4 +1,4 @@
-package com.cmri.pic.wall.server.helper;
+package cmri.snapshot.wall.server.helper;
 
 import cmri.utils.io.FileHelper;
 import cmri.utils.lang.Pair;

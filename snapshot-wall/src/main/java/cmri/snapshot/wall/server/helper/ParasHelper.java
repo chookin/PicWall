@@ -1,4 +1,4 @@
-package com.cmri.pic.wall.server.helper;
+package cmri.snapshot.wall.server.helper;
 
 import cmri.utils.lang.MapAdapter;
 import org.apache.commons.lang3.StringUtils;

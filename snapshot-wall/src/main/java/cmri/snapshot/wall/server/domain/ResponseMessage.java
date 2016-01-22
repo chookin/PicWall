@@ -1,4 +1,4 @@
-package com.cmri.pic.wall.server.domain;
+package cmri.snapshot.wall.server.domain;
 
 import java.util.HashMap;
 import java.util.Map;

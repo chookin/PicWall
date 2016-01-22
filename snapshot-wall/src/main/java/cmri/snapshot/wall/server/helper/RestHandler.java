@@ -1,9 +1,9 @@
-package com.cmri.pic.wall.server.helper;
+package cmri.snapshot.wall.server.helper;
 
+import cmri.snapshot.wall.server.WebMvcConfig;
+import cmri.snapshot.wall.server.domain.ResponseMessage;
 import cmri.utils.lang.MapAdapter;
 import cmri.utils.web.HttpConstant;
-import com.cmri.pic.wall.server.WebMvcConfig;
-import com.cmri.pic.wall.server.domain.ResponseMessage;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
